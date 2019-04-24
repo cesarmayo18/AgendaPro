@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    has_many :bets
     def self.recharge_balance
         User.update_all("balance = balance + 10000")
         puts Forecast::forecast_api

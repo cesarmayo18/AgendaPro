@@ -17,12 +17,12 @@ ActiveRecord::Schema.define(version: 2019_04_24_163206) do
 
   create_table "bets", force: :cascade do |t|
     t.integer "amount"
-    t.bigint "users_id"
-    t.bigint "games_id"
+    t.bigint "user_id"
+    t.bigint "game_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["games_id"], name: "index_bets_on_games_id"
-    t.index ["users_id"], name: "index_bets_on_users_id"
+    t.index ["game_id"], name: "index_bets_on_game_id"
+    t.index ["user_id"], name: "index_bets_on_user_id"
   end
 
   create_table "games", force: :cascade do |t|
@@ -38,6 +38,6 @@ ActiveRecord::Schema.define(version: 2019_04_24_163206) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "bets", "games", column: "games_id"
-  add_foreign_key "bets", "users", column: "users_id"
+  add_foreign_key "bets", "games"
+  add_foreign_key "bets", "users"
 end

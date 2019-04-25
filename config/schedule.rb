@@ -10,3 +10,10 @@ every 1.day, at: '11:59 pm' do
     runner "User.recharge_balance"         #Ejecuta método dentro del proyecto
 
 end
+
+every 3.minutes do
+
+    command "echo '-----Inicando juego-----'"      #Imprime mensaje en la salida cron_logs.logs
+    runner "Game.play"         #Ejecuta método dentro del proyecto
+
+end

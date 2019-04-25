@@ -1,2 +1,29 @@
-<h1>Games#index</h1>
-<p><%=@game.last.result%></p>
+<% @games.each do |game| %>
+	<table>
+		<tbody>
+			<tr class="game-table">
+				<table class="game-table">
+					<td>Juego numero <%= game.id %></td>
+					<td>Resultado:<%= game.result %></td>
+					<tbody>
+						<% game.bets.each do |bet| %>
+							<tr>
+								<td class="td"><%= bet.user.name %></td>
+								<td class="td"><%= bet.color %></td>
+								<td class="td"><%= bet.amount %>$</td>
+								<%if bet.color == game.result%>
+										<td class="td">Ganador</td>
+								<%else%>
+										<td class="td">Perdedor</td>
+								<%end%>  
+							</tr>
+						<%end%>
+					</tbody>
+				</table>
+			</tr>
+		</tbody>
+	</table>
+<% end %>
+<a href="/users/new">Create user</a>
+<a href="/users">Lista de usuarios</a>
+
